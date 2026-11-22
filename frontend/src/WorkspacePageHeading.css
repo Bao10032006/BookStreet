@@ -1,0 +1,127 @@
+/* Workspace page headings follow the Organizer Dashboard reference. */
+:root {
+  --workspace-title-font: "Noto Serif", Georgia, serif;
+  --workspace-title-size: clamp(1.875rem, 2.4vw, 2rem);
+  --workspace-title-color: #10251f;
+  --workspace-subtitle-font: "Be Vietnam Pro", var(--font-sans, sans-serif);
+  --workspace-subtitle-size: 0.975rem;
+  --workspace-subtitle-color: #5c7069;
+  --workspace-heading-gap: 0.2rem;
+  --workspace-page-top-space: 36px;
+  --workspace-page-inline-space: 48px;
+  --workspace-page-bottom-space: 64px;
+  --workspace-page-max-width: none;
+}
+
+/* Keep page headings the same distance below the application header. */
+:is(.organizer-app-shell, .admin-app-shell, .partner-app-shell, .participant-app-shell)
+  :is(.organizer-main-viewport, .admin-main-viewport, .partner-main-viewport, .participant-main-viewport) {
+  box-sizing: border-box;
+  width: auto;
+  min-width: 0;
+  max-width: var(--workspace-page-max-width);
+  margin-inline: auto;
+  /* Route CSS is loaded on demand, so this shared workspace frame must remain authoritative. */
+  padding: var(--workspace-page-top-space) var(--workspace-page-inline-space) var(--workspace-page-bottom-space) !important;
+}
+
+/* Keep the role workspaces scrollable without showing a second, oversized scrollbar. */
+html,
+body,
+:is(.role-sidebar, .admin-sidebar, .organizer-sidebar, .partner-sidebar, .participant-sidebar,
+  .organizer-main-viewport, .admin-main-viewport, .partner-main-viewport, .participant-main-viewport) {
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+:is(.role-sidebar, .admin-sidebar, .organizer-sidebar, .partner-sidebar, .participant-sidebar,
+  .organizer-main-viewport, .admin-main-viewport, .partner-main-viewport, .participant-main-viewport)::-webkit-scrollbar {
+  display: none;
+}
+
+/* Page wrappers must not add a second top inset before the heading. */
+:is(.organizer-main-viewport, .admin-main-viewport, .partner-main-viewport, .participant-main-viewport)
+  :where(div, section, header):has(.workspace-page-title):not(
+    .event-hub-hero,
+    .event-hub-hero-copy,
+    .partner-workspace-hero,
+    .partner-workspace-hero-copy
+  ) {
+  margin-top: 0 !important;
+  margin-inline: 0 !important;
+  padding-top: 0 !important;
+  padding-inline: 0 !important;
+}
+
+:is(.organizer-main-viewport, .admin-main-viewport, .partner-main-viewport, .participant-main-viewport)
+  > :has(.workspace-page-title) {
+  max-width: 100%;
+  width: 100%;
+  padding-bottom: 0 !important;
+}
+
+/* Hero card copy needs comfortable interior padding so text does not collide with the card border. */
+.partner-app-shell :is(.event-hub-hero-copy, .partner-workspace-hero-copy) {
+  align-self: center;
+  padding: 1.75rem 2.25rem !important;
+  box-sizing: border-box;
+}
+
+@media (max-width: 640px) {
+  .partner-app-shell :is(.event-hub-hero-copy, .partner-workspace-hero-copy) {
+    padding: 1.25rem 1.25rem !important;
+  }
+}
+
+:is(.organizer-app-shell, .admin-app-shell, .partner-app-shell, .participant-app-shell) h1.workspace-page-title {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: var(--workspace-title-font) !important;
+  font-size: var(--workspace-title-size) !important;
+  font-weight: 700 !important;
+  font-style: normal !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.025em !important;
+  color: var(--workspace-title-color) !important;
+  text-align: left !important;
+  text-transform: none !important;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+
+:is(.organizer-app-shell, .admin-app-shell, .partner-app-shell, .participant-app-shell) p.workspace-page-subtitle {
+  margin: var(--workspace-heading-gap) 0 0 !important;
+  padding: 0 !important;
+  max-width: 80ch !important;
+  font-family: var(--workspace-subtitle-font) !important;
+  font-size: var(--workspace-subtitle-size) !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  line-height: 1.35 !important;
+  letter-spacing: normal !important;
+  color: var(--workspace-subtitle-color) !important;
+  text-align: left !important;
+  text-transform: none !important;
+  text-wrap: pretty;
+}
+
+.admin-app-shell p.workspace-page-subtitle.adm-roles-description {
+  max-width: 100% !important;
+  white-space: nowrap;
+  text-wrap: nowrap;
+  overflow-x: auto;
+}
+
+:is(.organizer-app-shell, .admin-app-shell, .partner-app-shell, .participant-app-shell) .participant-page-header:not(.participant-notifications-header) {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+@media (max-width: 960px) {
+  .participant-app-shell.participant-app-shell .participant-main-viewport {
+    padding: 16px 14px calc(24px + env(safe-area-inset-bottom)) !important;
+  }
+}

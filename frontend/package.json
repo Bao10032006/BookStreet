@@ -1,0 +1,38 @@
+{
+  "name": "duongsach-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:backend": "npm --prefix server run dev",
+    "dev:server": "npm --prefix server run dev",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint src tests playwright.config.ts vite.config.ts",
+    "preview": "vite preview",
+    "test:e2e": "playwright test",
+    "test:sprint3": "playwright test tests/e2e/sprint3-payments-ui.spec.ts",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:install": "playwright install chromium"
+  },
+  "dependencies": {
+    "framer-motion": "^13.4.0",
+    "gsap": "^3.15.0",
+    "lucide-react": "^1.45.0",
+    "qrcode.react": "^4.2.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-router-dom": "^7.18.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "oxlint": "^1.81.0",
+    "typescript": "~6.0.2",
+    "vite": "^8.3.0"
+  }
+}
